@@ -6,25 +6,21 @@ import './style.css';
 
 function Auth() {
   const history = useHistory();
-  const [failed, setFailed] = useState(false);
+  const [failed, setFailed] = useState('');
   const globalState = useContext(store);
   const { state, dispatch } = globalState;
   const { isSignedIn, clientId } = state;
   const getContent = () => {
-    let f;
-    if (failed) {
-      f = 'Try again.';
-    } else {
-      f = '';
+    if (failed.length > 0) {
+      console.log('failed');
+      return <h4>Try again.</h4>;
     }
-    return <h4>{f}</h4>;
+    return null;
   };
-  const loading = (
-    <Redirect to="/search" />
-  );
+  const loading = <Redirect to="/search" />;
   const body = (
-    <div className="center nice">
-      <header>
+    <div className="nice">
+      <header className="center">
         <h1 id="title">Giphy Search</h1>
         <GoogleLogin
           clientId={clientId}
@@ -34,17 +30,14 @@ function Auth() {
               onClick={renderProps.onClick}
               disabled={renderProps.disabled}
               className="login"
-            >
-              {/* Login with Google */}
-            </button>
+            />
           )}
           onSuccess={res => {
-            // setFailed(false);
             dispatch({ type: 'signIn', user: res });
             history.push('/search');
           }}
           onFailure={err => {
-            setFailed(true);
+            setFailed(err.error);
           }}
           cookiePolicy="single_host_origin"
         />

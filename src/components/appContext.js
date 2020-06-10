@@ -5,7 +5,8 @@ const initialState = {
   isSignedIn: false,
   currUser: null,
   favorites: [],
-  clientId: "867791205142-9dl1r1afbc6n20f3hr1efsn63v3e2t9c.apps.googleusercontent.com"
+  clientId:
+    '867791205142-9dl1r1afbc6n20f3hr1efsn63v3e2t9c.apps.googleusercontent.com',
 };
 
 const store = createContext(initialState);
