@@ -199,7 +199,7 @@ function Picture(props) {
     date = import_datetime.slice(0, dLast);
   }
   return picData ? (
-    <div className="space">
+    <div className="container space">
       <header>
         {' '}
         <h2>{name}</h2>
@@ -211,12 +211,12 @@ function Picture(props) {
       <h4>{date}</h4>
       <div
         className="row no-gutters"
-        style={{ marginBottom: '2px', width: '25%' }}
+        style={{ marginBottom: '2px', width: '35%' }}
       >
-        <div className="col-2">
+        <div className="col-3 col-lg-2">
           <FavIcon url={url} />
         </div>
-        <div className="col-2">
+        <div className="col-3 col-lg-2">
           <ShareIcon url={url} />
         </div>
       </div>
