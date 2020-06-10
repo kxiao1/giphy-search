@@ -53,7 +53,7 @@ function TopBar(props) {
   }
   const headText = searchRes.length === 0 ? <h1>Trending</h1> : <h1>Search</h1>;
   return (
-    <Jumbotron fluid="true">
+    <Jumbotron>
       <div className="container">
         <div className="row">
           <div className="col-6">{headText}</div>
@@ -73,12 +73,12 @@ function TopBar(props) {
         </div>
         <div className="row">
           <div className="col">
-            <Form.Group className="w-75">
+            <Form.Group className="w-50">
               <Form.Control
                 type="text"
                 onChange={e => updateInputValue(e.target.value)}
                 defaultValue={searchRes}
-                placeholder="Search for gifs here"
+                placeholder="Search for gifs"
                 className="ml-xl-0"
               />
             </Form.Group>
@@ -133,7 +133,7 @@ function NavBar() {
   return (
     <div className="fixed-bottom">
       {/* <Navbar bg="light" variant="light" className="justify-content-center"> */}
-      <Container fluid="true">
+      <Container>
         <Nav justify variant="tabs" className="custom">
           <Nav.Item href="/search">
             <Nav.Link disabled="true">Search</Nav.Link>

@@ -55,10 +55,10 @@ function TopBar() {
     firstName = givenName.slice(0, firstidx);
   }
   return (
-    <Jumbotron fluid="true">
+    <Jumbotron>
       <div className="container">
         <div className="row">
-          <div className="col">
+          <div className="col-6">
             <h1>Details</h1>
           </div>
           <div className="col text-right">
@@ -206,7 +206,7 @@ function Picture(props) {
         <h2>{name}</h2>
       </header>
       <div style={{ textAlign: 'center', pointerEvents: 'none' }}>
-        <Gif gif={picData} onGifClick={stop} width={400} />
+        <Gif gif={picData} onGifClick={stop} width={width} />
       </div>
       <h3>{userName}</h3>
       <h4>{date}</h4>
@@ -239,7 +239,7 @@ function Picture(props) {
 function NavBar() {
   return (
     <div className="fixed-bottom">
-      <Container fluid="true">
+      <Container>
         <Nav justify variant="tabs">
           <Nav.Item href="/search">
             <Nav.Link as={Link} to="/search">
