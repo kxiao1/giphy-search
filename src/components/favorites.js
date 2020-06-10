@@ -58,7 +58,6 @@ function TopBar() {
               clientId={clientId}
               render={renderer}
               onLogoutSuccess={() => {
-                console.log('logged out');
                 history.push('/');
               }}
             />
@@ -91,21 +90,8 @@ function FavList() {
     } else {
       urlNew = url;
     }
-    console.log(urlNew);
     history.push('/details', { url: urlNew, res: '' });
   };
-  // useEffect(() => {
-  //   const callApi = () => {
-  //     const arr = favorites.map(async url => {
-  //       console.log(url);
-  //       // return `testing{$url}`;
-  //       return fetch(url);
-  //     });
-  //     Promise.all(arr).then(values => console.log(values));
-  //   };
-  //   callApi();
-  // }, [favorites, gf]);
-  // console.log(data);
   if (favorites.length === 0) {
     return (
       <div className="header">

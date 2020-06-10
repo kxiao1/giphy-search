@@ -70,7 +70,6 @@ function TopBar() {
               clientId={clientId}
               render={renderer}
               onLogoutSuccess={() => {
-                console.log('logged out');
                 history.push('/');
               }}
             />
@@ -155,10 +154,7 @@ function ShareIcon(props) {
   const copyToClipboard = e => {
     e.preventDefault();
     const toCopy = 'https://giphy.com/gifs/'.concat(url);
-    navigator.clipboard.writeText(toCopy).then(
-      () => console.log(`${toCopy} written to clipboard`),
-      error => console.log(error)
-    );
+    navigator.clipboard.writeText(toCopy);
   };
   return (
     <OverlayTrigger
