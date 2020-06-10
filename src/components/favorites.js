@@ -46,10 +46,10 @@ function TopBar() {
     <Jumbotron>
       <div className="container">
         <div className="row">
-          <div className="col">
+          <div className="col-8">
             <h1>Favorites</h1>
           </div>
-          <div className="col text-right">
+          <div className="col-4 text-right">
             <p>
               Welcome,
               <span className="bold">{` ${firstName} ${profile.familyName}`}</span>

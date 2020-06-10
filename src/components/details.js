@@ -55,7 +55,7 @@ function TopBar() {
     firstName = givenName.slice(0, firstidx);
   }
   return (
-    <Jumbotron>
+    <Jumbotron fluid="true">
       <div className="container">
         <div className="row">
           <div className="col">
@@ -211,12 +211,12 @@ function Picture(props) {
       <h4>{date}</h4>
       <div
         className="row no-gutters"
-        style={{ marginBottom: '2px', width: '35%' }}
+        style={{ marginBottom: '2px', width: '30%' }}
       >
-        <div className="col-3 col-lg-2">
+        <div className="col-4 col-sm-2">
           <FavIcon url={url} />
         </div>
-        <div className="col-3 col-lg-2">
+        <div className="col-4 col-sm-2">
           <ShareIcon url={url} />
         </div>
       </div>
@@ -272,7 +272,7 @@ function Details() {
     </div>
   );
   return (
-    <Container>
+    <Container fluid="true">
       <TopBar />
       {body}
       <NavBar />
