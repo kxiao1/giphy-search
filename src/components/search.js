@@ -41,7 +41,7 @@ function TopBar(props) {
 
   // written as redirect to make return logic clearer
   if (!isSignedIn || !profile) {
-    return <Redirect to="/" />;
+    return <Redirect to="../" />;
   }
   const { givenName } = profile;
   const firstidx = givenName.indexOf(',');

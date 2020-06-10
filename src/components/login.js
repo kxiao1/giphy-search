@@ -17,7 +17,7 @@ function Auth() {
     }
     return null;
   };
-  const loading = <Redirect to="/search" />;
+  const loading = <Redirect to="./search" />;
   const body = (
     <div className="nice">
       <header className="center">
@@ -34,7 +34,7 @@ function Auth() {
           )}
           onSuccess={res => {
             dispatch({ type: 'signIn', user: res });
-            history.push('/search');
+            history.push('./search');
           }}
           onFailure={err => {
             setFailed(err.error);

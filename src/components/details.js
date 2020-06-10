@@ -44,7 +44,7 @@ function TopBar() {
 
   // written as redirect to make return logic clearer
   if (!isSignedIn) {
-    return <Redirect to="/" />;
+    return <Redirect to="../" />;
   }
   const { givenName } = profile;
   const firstidx = givenName.indexOf(',');
@@ -70,7 +70,7 @@ function TopBar() {
               clientId={clientId}
               render={renderer}
               onLogoutSuccess={() => {
-                history.push('/');
+                history.push('../');
               }}
             />
           </div>
@@ -221,9 +221,13 @@ function Picture(props) {
         </div>
       </div>
       <div className="row no-gutters">
-        <a href="/search" onClick={() => history.push('/search', { res })}>
+        <button
+          type="button"
+          className="link"
+          onClick={() => history.push('./search', { res })}
+        >
           More search results
-        </a>
+        </button>
       </div>
     </div>
   ) : (
@@ -254,11 +258,23 @@ function NavBar() {
 }
 function Details() {
   const { state } = useLocation();
-  const { url, res } = state;
+  const history = useHistory();
+  const body = state ? (
+    <Picture url={state.url} res={state.res} />
+  ) : (
+    <div className="header">
+      <header>
+        <p>Oops, you have not selected an image to view yet!</p>
+        <button type="button" onClick={() => history.push('/search')}>
+          Back to Search
+        </button>
+      </header>
+    </div>
+  );
   return (
     <Container>
       <TopBar />
-      <Picture url={url} res={res} />
+      {body}
       <NavBar />
     </Container>
   );

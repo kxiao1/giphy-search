@@ -51,6 +51,16 @@ a:hover {
 .action:focus{
   outline: none;
 }
+.link{
+  background-color: white;
+  border-width: 0px;
+  border-color: white;
+  padding: 0;
+  margin: 0; 
+}
+.link:hover {
+  color: blueviolet;
+}
 .bold {
   color: blueviolet;
 }

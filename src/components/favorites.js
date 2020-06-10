@@ -32,7 +32,7 @@ function TopBar() {
 
   // written as redirect to make return logic clearer
   if (!isSignedIn) {
-    return <Redirect to="/" />;
+    return <Redirect to="../" />;
   }
   const { givenName } = profile;
   const firstidx = givenName.indexOf(',');
@@ -58,7 +58,7 @@ function TopBar() {
               clientId={clientId}
               render={renderer}
               onLogoutSuccess={() => {
-                history.push('/');
+                history.push('../');
               }}
             />
           </div>
@@ -90,14 +90,14 @@ function FavList() {
     } else {
       urlNew = url;
     }
-    history.push('/details', { url: urlNew, res: '' });
+    history.push('./details', { url: urlNew, res: '' });
   };
   if (favorites.length === 0) {
     return (
       <div className="header">
         <header>
           <p>Oops, you don&apos;t have any favorites yet!</p>
-          <button type="button" onClick={() => history.push('/search')}>
+          <button type="button" onClick={() => history.push('./search')}>
             Back to Search
           </button>
         </header>
