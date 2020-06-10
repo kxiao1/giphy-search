@@ -27,7 +27,7 @@ function App() {
 }
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/giphy-search">
     <App />
   </BrowserRouter>,
   document.getElementById('root')
