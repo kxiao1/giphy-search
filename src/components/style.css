@@ -4,6 +4,33 @@
   /* background-color: rgb(163, 114, 114); */
 }
 
+/* styling elements */
+p {
+  margin-bottom: 0rem;
+  /* float: left; */
+}
+h1 {
+  font-size: 3.5rem;
+}
+h4 {
+  color: silver;
+}
+img {
+  margin-bottom: 0.5rem;
+}
+
+
+a:active,
+a:hover {
+  text-decoration: none;
+}
+
+/* individual classes and id's */
+#title {
+  font-size: 5rem;
+  color: silver;
+}
+
 .nav-link {
   color: black;
 }
@@ -12,22 +39,20 @@
   /* position: fixed;
     bottom: 0 */
 }
-p {
-  margin-bottom: 0rem;
-  /* float: left; */
+.action{
+  background-color: white;
+  border-width: 0px;
+  border-color: white;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-shadow: none;
 }
-h1 {
-  font-size: 3.5rem;
-}
-#title {
-  font-size: 5rem;
-  color: silver;
+.action:focus{
+  outline: none;
 }
 .bold {
   color: blueviolet;
-}
-img {
-  margin-bottom: 0.5rem;
 }
 .header {
   text-align: center;
@@ -61,13 +86,16 @@ img {
   border: 1px solid transparent;
   font-weight: 500;
   font-family: Roboto, sans-serif; */
-  background: url("signin_light_normal.png");
+  background: url('signin_light_normal.png');
 }
-.login:hover {
-  background: url("signin_light_focus..png");
+
+.login:hover, .login:focus {
+  outline: none;
+  background: url('signin_light_focus.png');
 }
-.login:after {
-  background: url("signin_light_pressed.png");
+.login:active {
+  border: none;
+  background: url('signin_light_pressed.png');
 }
 .center {
   height: 100%;
@@ -75,6 +103,8 @@ img {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-image: url(background.gif);
   background-position: center;
+}
+.nice {
+  background-image: url(background.gif);
 }

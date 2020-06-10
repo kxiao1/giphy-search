@@ -15,29 +15,29 @@ function reducer(state, action) {
   const { clientId, favorites: curr, currUser } = state;
   const { url } = action;
   let newArr;
-  function binSearch(start) {
-    const len = start.length;
-    const mid = Math.floor(len / 2);
-    switch (len) {
-      case 0:
-        console.log('non-existent!');
-        return -1;
-      case 1:
-        if (start[0] === url) {
-          return 0;
-        }
-        console.log('non-existent!');
-        return -1;
-      default:
-        if (start[mid] === url) {
-          return mid;
-        }
-        if (start[mid] < url) {
-          return mid + 1 + binSearch(start.slice(mid + 1));
-        }
-        return binSearch(start.slice(0, mid));
-    }
-  }
+  // function binSearch(start) {
+  //   const len = start.length;
+  //   const mid = Math.floor(len / 2);
+  //   switch (len) {
+  //     case 0:
+  //       console.log('non-existent!');
+  //       return -1;
+  //     case 1:
+  //       if (start[0] === url) {
+  //         return 0;
+  //       }
+  //       console.log('non-existent!');
+  //       return -1;
+  //     default:
+  //       if (start[mid] === url) {
+  //         return mid;
+  //       }
+  //       if (start[mid] < url) {
+  //         return mid + 1 + binSearch(start.slice(mid + 1));
+  //       }
+  //       return binSearch(start.slice(0, mid));
+  //   }
+  // }
   function linSearch(start) {
     const len = start.length;
     for (let i = 0; i < len; i += 1) {

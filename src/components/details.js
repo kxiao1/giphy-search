@@ -1,7 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useHistory, Redirect } from 'react-router-dom';
 import { GoogleLogout } from 'react-google-login';
-import { Nav, Container, Jumbotron } from 'react-bootstrap';
+import {
+  Nav,
+  Container,
+  Jumbotron,
+  OverlayTrigger,
+  Tooltip,
+} from 'react-bootstrap';
 import { Gif } from '@giphy/react-components';
 import { GiphyFetch } from '@giphy/js-fetch-api';
 
@@ -80,24 +86,24 @@ function FavIcon(props) {
   const { state, dispatch } = globalState;
   const { favorites } = state;
   const { url } = props;
-  function binSearch(start) {
-    const len = start.length;
-    const mid = Math.floor(len / 2);
-    switch (len) {
-      case 0:
-        return false;
-      case 1:
-        return start[0] === url;
-      default:
-        if (start[mid] === url) {
-          return true;
-        }
-        if (start[mid] < url) {
-          return binSearch(start.slice(mid + 1));
-        }
-        return binSearch(start.slice(0, mid));
-    }
-  }
+  // function binSearch(start) {
+  //   const len = start.length;
+  //   const mid = Math.floor(len / 2);
+  //   switch (len) {
+  //     case 0:
+  //       return false;
+  //     case 1:
+  //       return start[0] === url;
+  //     default:
+  //       if (start[mid] === url) {
+  //         return true;
+  //       }
+  //       if (start[mid] < url) {
+  //         return binSearch(start.slice(mid + 1));
+  //       }
+  //       return binSearch(start.slice(0, mid));
+  //   }
+  // }
   function linSearch(start) {
     const len = start.length;
     for (let i = 0; i < len; i += 1) {
@@ -122,14 +128,24 @@ function FavIcon(props) {
     }
   };
   const [Fav, setFav] = useState(isFav());
+  const prompt = Fav ? 'Remove from favorites' : 'Add to favorites';
   return (
-    <a href="/details" onClick={e => handleClick(e, !Fav)}>
-      <FontAwesomeIcon
-        icon={Fav ? faHeartS : faHeartR}
-        style={{ color: 'red' }}
-        size="2x"
-      />
-    </a>
+    <OverlayTrigger
+      placement="right"
+      overlay={<Tooltip id="tooltip-right">{prompt}</Tooltip>}
+    >
+      <button
+        type="button"
+        className="action"
+        onClick={e => handleClick(e, !Fav)}
+      >
+        <FontAwesomeIcon
+          icon={Fav ? faHeartS : faHeartR}
+          style={{ color: 'red' }}
+          size="2x"
+        />
+      </button>
+    </OverlayTrigger>
   );
   // return null;
 }
@@ -145,9 +161,18 @@ function ShareIcon(props) {
     );
   };
   return (
-    <a href="/details" onClick={copyToClipboard}>
-      <FontAwesomeIcon icon={faShareAlt} style={{ color: 'black' }} size="2x" />
-    </a>
+    <OverlayTrigger
+      placement="right"
+      overlay={<Tooltip id="tooltip-right">Copy link to clipboard</Tooltip>}
+    >
+      <button type="button" className="action" onClick={copyToClipboard}>
+        <FontAwesomeIcon
+          icon={faShareAlt}
+          style={{ color: 'black' }}
+          size="2x"
+        />
+      </button>
+    </OverlayTrigger>
   );
 }
 function Picture(props) {
@@ -188,21 +213,21 @@ function Picture(props) {
       </div>
       <h3>{userName}</h3>
       <h4>{date}</h4>
-      <div className="row no-gutters" style={{ width: '25%' }}>
+      <div
+        className="row no-gutters"
+        style={{ marginBottom: '2px', width: '25%' }}
+      >
         <div className="col-2">
           <FavIcon url={url} />
         </div>
         <div className="col-2">
           <ShareIcon url={url} />
         </div>
-        <div className="col-8">
-          <button
-            type="button"
-            onClick={() => history.push('/search', { res })}
-          >
-            More search results
-          </button>
-        </div>
+      </div>
+      <div className="row no-gutters">
+        <a href="/search" onClick={() => history.push('/search', { res })}>
+          More search results
+        </a>
       </div>
     </div>
   ) : (

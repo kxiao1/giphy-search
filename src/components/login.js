@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import { store } from './appContext';
 import './style.css';
@@ -18,21 +18,19 @@ function Auth() {
     } else {
       f = '';
     }
-    return (
-      <div>
-        <p>{f}</p>
-      </div>
-    );
+    return <h4>{f}</h4>;
   };
   const loading = (
-    <div className="center">
-      <header>
-        <h1>Loading...</h1>
-      </header>
-    </div>
+    <Redirect to="/search" />
+    // <div className="center">
+    //   <header>
+    //     <h1>Loading...</h1>
+
+    //   </header>
+    // </div>
   );
   const body = (
-    <div className="center">
+    <div className="center nice">
       <header>
         <h1 id="title">Giphy Search</h1>
         <GoogleLogin
@@ -58,8 +56,8 @@ function Auth() {
           }}
           cookiePolicy="single_host_origin"
         />
+        {getContent()}
       </header>
-      {getContent()}{' '}
     </div>
   );
   return isSignedIn ? loading : body;
