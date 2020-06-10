@@ -43,13 +43,13 @@ function TopBar() {
     firstName = givenName.slice(0, firstidx);
   }
   return (
-    <Jumbotron>
+    <Jumbotron fluid="true">
       <div className="container">
         <div className="row">
-          <div className="col-8">
+          <div className="col-7">
             <h1>Favorites</h1>
           </div>
-          <div className="col-4 text-right">
+          <div className="col text-right">
             <p>
               Welcome,
               <span className="bold">{` ${firstName} ${profile.familyName}`}</span>
@@ -123,7 +123,7 @@ function FavList() {
 function NavBar() {
   return (
     <div className="fixed-bottom">
-      <Container>
+      <Container fluid="true">
         <Nav justify variant="tabs">
           <Nav.Item href="/search">
             <Nav.Link as={Link} to="/search">

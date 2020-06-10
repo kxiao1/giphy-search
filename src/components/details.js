@@ -18,7 +18,7 @@ import {
   faShareAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { store } from './appContext';
+import { store, useWidth } from './appContext';
 import './style.css';
 import icon from './icon_light_normal_ios.png';
 
@@ -182,6 +182,7 @@ function Picture(props) {
     e.stopPropagation();
     e.preventDefault();
   };
+  const width = Math.min(400,useWidth());
   useEffect(() => {
     const fetchData = async () => {
       const gf = new GiphyFetch('xnRLsVCSkmNxrfX34lVxjbuN4faLWKbq');
@@ -238,7 +239,7 @@ function Picture(props) {
 function NavBar() {
   return (
     <div className="fixed-bottom">
-      <Container>
+      <Container fluid="true">
         <Nav justify variant="tabs">
           <Nav.Item href="/search">
             <Nav.Link as={Link} to="/search">
@@ -272,7 +273,7 @@ function Details() {
     </div>
   );
   return (
-    <Container fluid="true">
+    <Container>
       <TopBar />
       {body}
       <NavBar />
