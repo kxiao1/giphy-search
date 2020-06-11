@@ -228,7 +228,7 @@ function Picture(props) {
     }
   }
   return picData && avatar ? (
-    <div className="container space">
+    <div className="container left space">
       <header>
         {' '}
         <h2>{name}</h2>
