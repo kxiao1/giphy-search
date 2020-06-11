@@ -1,27 +1,28 @@
 {
   "files": {
-    "main.css": "/giphy-search/static/css/main.2721e6e9.chunk.css",
-    "main.js": "/giphy-search/static/js/main.27239ed1.chunk.js",
-    "main.js.map": "/giphy-search/static/js/main.27239ed1.chunk.js.map",
+    "main.css": "/giphy-search/static/css/main.bfe1ece5.chunk.css",
+    "main.js": "/giphy-search/static/js/main.64c24311.chunk.js",
+    "main.js.map": "/giphy-search/static/js/main.64c24311.chunk.js.map",
     "runtime-main.js": "/giphy-search/static/js/runtime-main.81b2a826.js",
     "runtime-main.js.map": "/giphy-search/static/js/runtime-main.81b2a826.js.map",
     "static/css/2.af3c1da9.chunk.css": "/giphy-search/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.78bfaed9.chunk.js": "/giphy-search/static/js/2.78bfaed9.chunk.js",
-    "static/js/2.78bfaed9.chunk.js.map": "/giphy-search/static/js/2.78bfaed9.chunk.js.map",
+    "static/js/2.3427c729.chunk.js": "/giphy-search/static/js/2.3427c729.chunk.js",
+    "static/js/2.3427c729.chunk.js.map": "/giphy-search/static/js/2.3427c729.chunk.js.map",
     "index.html": "/giphy-search/index.html",
-    "precache-manifest.dd2a2041d536a136be68957befba2b7d.js": "/giphy-search/precache-manifest.dd2a2041d536a136be68957befba2b7d.js",
+    "precache-manifest.b467e65279db9e08465a5538d7c7d7f3.js": "/giphy-search/precache-manifest.b467e65279db9e08465a5538d7c7d7f3.js",
     "service-worker.js": "/giphy-search/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/giphy-search/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.2721e6e9.chunk.css.map": "/giphy-search/static/css/main.2721e6e9.chunk.css.map",
-    "static/js/2.78bfaed9.chunk.js.LICENSE.txt": "/giphy-search/static/js/2.78bfaed9.chunk.js.LICENSE.txt",
+    "static/css/main.bfe1ece5.chunk.css.map": "/giphy-search/static/css/main.bfe1ece5.chunk.css.map",
+    "static/js/2.3427c729.chunk.js.LICENSE.txt": "/giphy-search/static/js/2.3427c729.chunk.js.LICENSE.txt",
+    "static/media/avatar.png": "/giphy-search/static/media/avatar.6aa0c446.png",
     "static/media/style.css": "/giphy-search/static/media/background.5c0e699c.gif",
     "static/media/giphy.gif": "/giphy-search/static/media/giphy.7043b95a.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.81b2a826.js",
     "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.78bfaed9.chunk.js",
-    "static/css/main.2721e6e9.chunk.css",
-    "static/js/main.27239ed1.chunk.js"
+    "static/js/2.3427c729.chunk.js",
+    "static/css/main.bfe1ece5.chunk.css",
+    "static/js/main.64c24311.chunk.js"
   ]
 }
