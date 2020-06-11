@@ -11,6 +11,7 @@ p {
 }
 h1 {
   font-size: 3.5rem;
+  margin-bottom: 0;
 }
 h4 {
   color: silver;
@@ -30,7 +31,16 @@ a:hover {
   font-size: 5rem;
   color: silver;
 }
-
+.row-fluid {
+  display: flex;
+  align-items: flex-end;
+}
+.big {
+  min-width: 15rem;
+}
+.lift {
+  margin-bottom: 10px;
+}
 .nav-link {
   color: black;
 }
@@ -59,7 +69,7 @@ a:hover {
   margin: 0; 
 }
 .link:hover {
-  color: blueviolet;
+  color: #007bff;
 }
 .bold {
   color: blueviolet;
@@ -67,10 +77,12 @@ a:hover {
 .header {
   text-align: center;
   justify-content: center;
-  position: absolute;
+  align-items: center;
+  display: flex;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 .space {
   margin-bottom: 45px;
@@ -108,10 +120,10 @@ a:hover {
   background: url('signin_light_pressed.png');
 }
 .center {
-  /* height: 100%; */
+  max-height: 100%;
   position: absolute;
-  top: 45%;
   left: 50%;
+  bottom: 30%;
   transform: translate(-50%, 0%);
   /* display: flex;
   align-items: center; */

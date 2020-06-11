@@ -55,9 +55,9 @@ function TopBar(props) {
   return (
     <Jumbotron>
       <div className="container">
-        <div className="row">
-          <div className="col-6">{headText}</div>
-          <div className="col text-right">
+        <div className="row row-fluid">
+          <div className="col-6 big">{headText}</div>
+          <div className="col text-right lift">
             <p>
               Welcome,
               <span className="bold">{` ${firstName} ${profile.familyName}`}</span>

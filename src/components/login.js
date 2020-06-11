@@ -10,9 +10,10 @@ function Auth() {
   const globalState = useContext(store);
   const { state, dispatch } = globalState;
   const { isSignedIn, clientId } = state;
+  console.log(failed);
   const getContent = () => {
     if (failed.length > 0) {
-      console.log('failed');
+      console.log(failed);
       return <h4>Try again.</h4>;
     }
     return null;
