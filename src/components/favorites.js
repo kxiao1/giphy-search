@@ -94,7 +94,7 @@ function FavList() {
   };
   if (favorites.length === 0) {
     return (
-      <div className="header">
+      <div className="header space">
         <header>
           <p>Oops, you don&apos;t have any favorites yet!</p>
           <button type="button" onClick={() => history.push('./search')}>
@@ -111,6 +111,7 @@ function FavList() {
         <img src={logo} width="400" alt="Powered by GIPHY" />
       </header>
       <Grid
+        hideAttribution
         key={key}
         width={width}
         columns={3}

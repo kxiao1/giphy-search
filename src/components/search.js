@@ -120,6 +120,7 @@ function Gifs(props) {
 
   return (
     <Grid
+      hideAttribution
       key={searchRes}
       width={width}
       columns={3}

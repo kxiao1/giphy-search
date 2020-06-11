@@ -21,6 +21,7 @@ import {
 import { store, useWidth } from './appContext';
 import './style.css';
 import icon from './icon_light_normal_ios.png';
+import filler from './avatar.png';
 
 function TopBar() {
   const globalState = useContext(store);
@@ -146,7 +147,6 @@ function FavIcon(props) {
       </button>
     </OverlayTrigger>
   );
-  // return null;
 }
 
 function ShareIcon(props) {
@@ -178,11 +178,15 @@ function Picture(props) {
   const { res, url } = props;
   const history = useHistory();
   const [picData, setData] = useState(null);
-  const stop = e => {
+  const [avatar, setAvatar] = useState(null);
+  const [avatarUrl, setAvatarUrl] = useState('');
+  const width = Math.min(useWidth(), 400);
+  const withMargin = width + 15;
+  const stop = (gif, e) => {
     e.stopPropagation();
     e.preventDefault();
+    window.open(gif.url, '_blank');
   };
-  const width = Math.min(400,useWidth());
   useEffect(() => {
     const fetchData = async () => {
       const gf = new GiphyFetch('xnRLsVCSkmNxrfX34lVxjbuN4faLWKbq');
@@ -191,33 +195,63 @@ function Picture(props) {
     };
     fetchData();
   }, [url]);
+  useEffect(() => {
+    const fetchAvatar = async u => {
+      fetch(u)
+        .then(res1 => {
+          return res1.blob();
+        })
+        .then(blob => {
+          const img = URL.createObjectURL(blob);
+          setAvatar(<img src={img} width="100" alt="avatar" />);
+        });
+    };
+    if (avatarUrl === 'blank') {
+      setAvatar(<img src={filler} width="100" alt="avatar_default" />);
+    } else if (avatarUrl !== '') {
+      fetchAvatar(avatarUrl);
+    }
+  }, [avatarUrl]);
+
   if (picData) {
-    const { title, user, import_datetime } = picData;
-    const tLast = title.lastIndexOf('GIF');
-    name = title.slice(0, tLast - 1);
-    userName = user ? user.display_name : '<Unknown User>';
-    const dLast = import_datetime.lastIndexOf(' ');
-    date = import_datetime.slice(0, dLast);
+    if (avatar) {
+      const { title, user, import_datetime } = picData;
+      const dLast = import_datetime.lastIndexOf(' ');
+      date = import_datetime.slice(0, dLast);
+      const tLast = title.lastIndexOf('GIF');
+      name = title.slice(0, tLast - 1);
+      userName = user ? user.display_name : '<Unknown User>';
+    }
+    if (avatarUrl === '') {
+      const { user } = picData;
+      setAvatarUrl(user ? user.avatar_url : 'blank');
+    }
   }
-  return picData ? (
+  return picData && avatar ? (
     <div className="container space">
       <header>
         {' '}
         <h2>{name}</h2>
       </header>
-      <div style={{ textAlign: 'center', pointerEvents: 'none' }}>
-        <Gif gif={picData} onGifClick={stop} width={width} />
+      <div>
+        <Gif hideAttribution gif={picData} onGifClick={stop} width={width} />
       </div>
-      <h3>{userName}</h3>
-      <h4>{date}</h4>
+      <div className="row desc" style={{ width: withMargin }}>
+        {/* {' //account for negative margin '} */}
+        <div className="col-3 fixed100">{avatar}</div>
+        <div className="col">
+          <h3>{userName}</h3>
+          <h4>{date}</h4>
+        </div>
+      </div>
       <div
         className="row no-gutters"
         style={{ marginBottom: '2px', width: '30%' }}
       >
-        <div className="col-4 col-sm-2">
+        <div className="col-3 col-md-2 small">
           <FavIcon url={url} />
         </div>
-        <div className="col-4 col-sm-2">
+        <div className="col-3 col-md-2 small">
           <ShareIcon url={url} />
         </div>
       </div>
@@ -225,7 +259,7 @@ function Picture(props) {
         <button
           type="button"
           className="link"
-          onClick={() => history.push('./search', { res })}
+          onClick={() => history.push('/search', { res })}
         >
           More search results
         </button>
@@ -252,18 +286,18 @@ function NavBar() {
             </Nav.Link>
           </Nav.Item>
         </Nav>
-        {/* <Routes /> */}
       </Container>
     </div>
   );
 }
+
 function Details() {
   const { state } = useLocation();
   const history = useHistory();
   const body = state ? (
     <Picture url={state.url} res={state.res} />
   ) : (
-    <div className="header">
+    <div className="header space">
       <header>
         <p>Oops, you have not selected an image to view yet!</p>
         <button type="button" onClick={() => history.push('/search')}>
