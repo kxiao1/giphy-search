@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3f3a65606d2588f7a56f826f6b148d08",
+    "revision": "83beb8363e235aea25d47b7be176768d",
     "url": "/giphy-search/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/giphy-search/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "386a91ab0af5ae43536a",
-    "url": "/giphy-search/static/css/main.c6bce54f.chunk.css"
+    "revision": "f74a9f008f423dd1c955",
+    "url": "/giphy-search/static/css/main.0cfefc67.chunk.css"
   },
   {
     "revision": "bc0cccc1722cc7a86339",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/giphy-search/static/js/2.3427c729.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "386a91ab0af5ae43536a",
-    "url": "/giphy-search/static/js/main.1a6b7e5b.chunk.js"
+    "revision": "f74a9f008f423dd1c955",
+    "url": "/giphy-search/static/js/main.84dc04e9.chunk.js"
   },
   {
     "revision": "a307b52065423a1bce71",
