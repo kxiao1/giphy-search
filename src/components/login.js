@@ -7,7 +7,7 @@ import './style.css';
 function Auth() {
   const history = useHistory();
   const [failed, setFailed] = useState(
-    '(*Demo. No Google Data saved on refresh.)'
+    '(*Demo. No server/browser storage of data.)'
   );
   const globalState = useContext(store);
   const { state, dispatch } = globalState;
