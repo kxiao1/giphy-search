@@ -7,7 +7,7 @@ import './style.css';
 function Auth() {
   const history = useHistory();
   const [failed, setFailed] = useState(
-    '(*Demo. No server/browser storage of data.)'
+    '(*Demo: No server. Only name is stored, and in sessionStorage.)'
   );
   const globalState = useContext(store);
   const { state, dispatch } = globalState;

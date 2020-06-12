@@ -14,8 +14,29 @@ function TopBar() {
   const globalState = useContext(store);
   const history = useHistory();
   const { state, dispatch } = globalState;
-  const { currUser, isSignedIn, clientId } = state;
-  const profile = currUser ? currUser.profileObj : null;
+  const { currUser, clientId } = state;
+  let profile = null;
+  const storedProfile = sessionStorage.profile
+    ? JSON.parse(sessionStorage.profile)
+    : null;
+  if (currUser) {
+    const temp1 = currUser.profileObj.givenName;
+    const temp2 = currUser.profileObj.familyName;
+    if (
+      storedProfile &&
+      (temp1 !== storedProfile.givenName || temp2 !== storedProfile.familyName)
+    ) {
+      sessionStorage.clear();
+    }
+    const newProfile = {
+      familyName: currUser.profileObj.familyName,
+      givenName: currUser.profileObj.givenName,
+    };
+    sessionStorage.setItem('profile', JSON.stringify(newProfile));
+    profile = currUser.profileObj;
+  } else if (storedProfile) {
+    profile = storedProfile;
+  }
   const renderer = renderProps => (
     <button
       type="button"
@@ -31,7 +52,7 @@ function TopBar() {
   );
 
   // written as redirect to make return logic clearer
-  if (!isSignedIn) {
+  if (!profile) {
     return <Redirect to="../" />;
   }
   const { givenName } = profile;
@@ -97,6 +118,7 @@ function FavList() {
       <div className="header space">
         <header>
           <p>Oops, you don&apos;t have any favorites yet!</p>
+          <p>(Existing favorites are deleted upon refresh.)</p>
           <button type="button" onClick={() => history.push('./search')}>
             Back to Search
           </button>

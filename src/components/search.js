@@ -14,9 +14,31 @@ function TopBar(props) {
   const globalState = useContext(store);
   const history = useHistory();
   const { state, dispatch } = globalState;
-  const { currUser, isSignedIn, clientId } = state;
+  const { currUser, clientId } = state;
   const { searchRes, setSearch } = props;
-  const profile = currUser ? currUser.profileObj : null;
+  let profile = null;
+  const storedProfile = sessionStorage.profile
+    ? JSON.parse(sessionStorage.profile)
+    : null;
+  if (currUser) {
+    const temp1 = currUser.profileObj.givenName;
+    const temp2 = currUser.profileObj.familyName;
+    if (
+      storedProfile &&
+      (temp1 !== storedProfile.givenName || temp2 !== storedProfile.familyName)
+    ) {
+      sessionStorage.clear();
+    }
+    const newProfile = {
+      familyName: currUser.profileObj.familyName,
+      givenName: currUser.profileObj.givenName,
+    };
+    sessionStorage.setItem('profile', JSON.stringify(newProfile));
+    profile = currUser.profileObj;
+  } else if (storedProfile) {
+    profile = storedProfile;
+  }
+
   const [timer, setTimer] = useState(0);
   const updateInputValue = newVal => {
     if (timer) {
@@ -40,7 +62,7 @@ function TopBar(props) {
   );
 
   // written as redirect to make return logic clearer
-  if (!isSignedIn || !profile) {
+  if (!profile) {
     return <Redirect to="../" />;
   }
   const { givenName } = profile;
