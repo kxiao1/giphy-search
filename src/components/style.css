@@ -13,8 +13,11 @@ h1 {
   font-size: 3.5rem;
   margin-bottom: 0;
 }
-h4 {
+h4,h5 {
   color: silver;
+}
+h5 {
+  min-width: 400px;
 }
 img {
   margin-bottom: 0.5rem;
@@ -37,7 +40,7 @@ a:hover {
   font-size: 4.2rem;
   color: silver;
   /* max-height: 200px; */
-  max-width: 26.25rem;
+  min-width: 27rem;
 }
 .row-fluid {
   display: flex;

@@ -6,13 +6,15 @@ import './style.css';
 
 function Auth() {
   const history = useHistory();
-  const [failed, setFailed] = useState('(*Demo only. No Google Data saved.)');
+  const [failed, setFailed] = useState(
+    '(*Demo. No Google Data saved on refresh.)'
+  );
   const globalState = useContext(store);
   const { state, dispatch } = globalState;
   const { isSignedIn, clientId } = state;
   const getContent = () => {
     if (failed.length > 0) {
-      return <h4>{failed}</h4>;
+      return <h5>{failed}</h5>;
     }
     return null;
   };
