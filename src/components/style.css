@@ -129,7 +129,7 @@ a:hover {
   left:50%;
   transform: translate(-50%,-50%); 
   max-height: 300px;
-  margin-bottom: -20px;
+  margin-bottom: -40px;
   text-align: center;
 }
 .nice {
