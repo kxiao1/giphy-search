@@ -33,19 +33,6 @@ function TopBar() {
     ? JSON.parse(sessionStorage.profile)
     : null;
   if (currUser) {
-    const temp1 = currUser.profileObj.givenName;
-    const temp2 = currUser.profileObj.familyName;
-    if (
-      storedProfile &&
-      (temp1 !== storedProfile.givenName || temp2 !== storedProfile.familyName)
-    ) {
-      sessionStorage.clear();
-    }
-    const newProfile = {
-      familyName: currUser.profileObj.familyName,
-      givenName: currUser.profileObj.givenName,
-    };
-    sessionStorage.setItem('profile', JSON.stringify(newProfile));
     profile = currUser.profileObj;
   } else if (storedProfile) {
     profile = storedProfile;
@@ -56,6 +43,7 @@ function TopBar() {
       style={{ backgroundColor: 'white', border: '1px solid #ced4da' }}
       onClick={() => {
         dispatch({ type: 'signOut' });
+        sessionStorage.clear();
         renderProps.onClick();
       }}
     >
@@ -84,8 +72,8 @@ function TopBar() {
             <h1>Details</h1>
           </div>
           <div className="col text-right lift">
+            <p> Welcome,</p>
             <p>
-              Welcome,
               <span className="bold">{` ${firstName} ${profile.familyName}`}</span>
             </p>
             <GoogleLogout

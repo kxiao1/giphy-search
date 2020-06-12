@@ -53,6 +53,7 @@ function TopBar(props) {
       style={{ backgroundColor: 'white', border: '1px solid #ced4da' }}
       onClick={() => {
         dispatch({ type: 'signOut' });
+        sessionStorage.clear();
         renderProps.onClick();
       }}
     >
@@ -80,8 +81,8 @@ function TopBar(props) {
         <div className="row row-fluid">
           <div className="col-6 big">{headText}</div>
           <div className="col text-right lift">
+            <p> Welcome,</p>
             <p>
-              Welcome,
               <span className="bold">{` ${firstName} ${profile.familyName}`}</span>
             </p>
             <GoogleLogout
@@ -177,11 +178,12 @@ function Search() {
   const { state } = useLocation();
   const init = state ? state.res : '';
   const [searchRes, setSearch] = useState(init);
+  const width = Math.min(useWidth(), 400);
   return (
     <Container>
       <TopBar searchRes={searchRes} setSearch={setSearch} />
       <header>
-        <img src={logo} width="400" alt="Powered by GIPHY" />
+        <img src={logo} width={width} alt="Powered by GIPHY" />
       </header>
       <Gifs searchRes={searchRes} />
       <NavBar />

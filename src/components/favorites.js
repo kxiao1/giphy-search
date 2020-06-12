@@ -20,19 +20,6 @@ function TopBar() {
     ? JSON.parse(sessionStorage.profile)
     : null;
   if (currUser) {
-    const temp1 = currUser.profileObj.givenName;
-    const temp2 = currUser.profileObj.familyName;
-    if (
-      storedProfile &&
-      (temp1 !== storedProfile.givenName || temp2 !== storedProfile.familyName)
-    ) {
-      sessionStorage.clear();
-    }
-    const newProfile = {
-      familyName: currUser.profileObj.familyName,
-      givenName: currUser.profileObj.givenName,
-    };
-    sessionStorage.setItem('profile', JSON.stringify(newProfile));
     profile = currUser.profileObj;
   } else if (storedProfile) {
     profile = storedProfile;
@@ -43,6 +30,7 @@ function TopBar() {
       style={{ backgroundColor: 'white', border: '1px solid #ced4da' }}
       onClick={() => {
         dispatch({ type: 'signOut' });
+        sessionStorage.clear();
         renderProps.onClick();
       }}
     >
@@ -71,8 +59,8 @@ function TopBar() {
             <h1>Favorites</h1>
           </div>
           <div className="col text-right lift">
+            <p> Welcome,</p>
             <p>
-              Welcome,
               <span className="bold">{` ${firstName} ${profile.familyName}`}</span>
             </p>
             <GoogleLogout
@@ -96,6 +84,7 @@ function FavList() {
   const gf = new GiphyFetch('xnRLsVCSkmNxrfX34lVxjbuN4faLWKbq');
   const fetchGifs = offset => gf.gifs(favorites);
   const width = useWidth();
+  const widthGiphy = Math.min(useWidth(), 400);
   const history = useHistory();
   const getGif = (gif, e) => {
     e.stopPropagation();
@@ -130,7 +119,7 @@ function FavList() {
   return (
     <div>
       <header>
-        <img src={logo} width="400" alt="Powered by GIPHY" />
+        <img src={logo} width={widthGiphy} alt="Powered by GIPHY" />
       </header>
       <Grid
         hideAttribution

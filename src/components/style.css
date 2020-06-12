@@ -16,32 +16,39 @@ h1 {
 h4,h5 {
   color: silver;
 }
-h5 {
-  min-width: 400px;
-}
 img {
   margin-bottom: 0.5rem;
 }
 
+.jumbotron {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
 
 a:active,
 a:hover {
   text-decoration: none;
 }
-
-/* individual classes and id's */
-@media only screen and (min-width: 540px) {
-  #title {
-    white-space: nowrap;
-  }
-}
-
 #title {
   font-size: 4.2rem;
   color: silver;
   /* max-height: 200px; */
-  min-width: 27rem;
+
 }
+/* individual classes and id's */
+@media only screen and (min-width: 540px) {
+  #title {
+    white-space: nowrap;
+    font-size: 5rem;
+    min-width: 27rem;
+  }
+  h5 {
+    min-width: 27rem;
+  }
+}
+
+
 .row-fluid {
   display: flex;
   align-items: flex-end;
@@ -50,7 +57,7 @@ a:hover {
   min-width: 15rem;
 }
 .lift {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.7rem;
 }
 .small {
   min-width: 2rem;
@@ -110,31 +117,51 @@ a:hover {
 }
 .g-icon {
   margin: 0;
-  height: 1.75rem;
-  width: 1.9375rem;
+  height: 0;
+}
+@media only screen and (min-width: 540px) {
+  .g-icon { height: 1.75rem; }
 }
 .login {
   padding: 0;
   border: 0;
-  height: 5.75rem;
-  width: 23.875rem;
-  background: url('signin_light_normal.png');
+  height: 46px;
+  width: 191px;
+  outline: none;
+  background: url('btn_google_signin_dark_normal_web.png');
 }
 
 .login:hover, .login:focus {
   outline: none;
-  background: url('signin_light_focus.png');
+  background: url('btn_google_signin_dark_focus_web.png');
 }
 .login:active {
-  border: none;
-  background: url('signin_light_pressed.png');
+  outline: none;
+  background: url('btn_google_signin_dark_pressed_web.png');
+}
+@media only screen and (min-width: 540px) {
+  .login {
+    padding: 0;
+    border: 0;
+    height: 92px;
+    width: 382px;
+    background: url('signin_light_normal.png')
+  }
+  .login:hover, .login:focus {
+    outline: none;
+    background: url('signin_light_focus.png');
+  }
+  .login:active {
+    outline: none;
+    background: url('signin_light_pressed.png');
+  }
 }
 .center {
   position: absolute;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%); 
-  max-height: 300px;
+  max-height: 200vh;
   text-align: center;
 }
 .nice {
