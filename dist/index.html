@@ -23,6 +23,7 @@
       (function(l) {
         if (l.search) {
           var q = {};
+          console.log(l.search);
           l.search
             .slice(1)
             .split('&')
@@ -33,15 +34,15 @@
                 .join('=')
                 .replace(/~and~/g, '&');
             });
+          console.log(q);
+          const newEntry =
+            l.pathname.slice(0, -1) +
+            (q.p || '') +
+            (q.q ? '?' + q.q : '') +
+            l.hash;
+          console.log(newEntry);
           if (q.p !== undefined) {
-            window.history.replaceState(
-              null,
-              null,
-              l.pathname.slice(0, -1) +
-                (q.p || '') +
-                (q.q ? '?' + q.q : '') +
-                l.hash
-            );
+            window.history.replaceState(null, null, newEntry);
           }
         }
       })(window.location);
