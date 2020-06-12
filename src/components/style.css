@@ -139,7 +139,7 @@ a:hover {
   justify-content: center; */
   text-align: center;
   height: 100%;
-  background-image: url(/background.gif);  
+  background: url(./background.gif);  
   background-position: center;
   background-size: cover;
 }
