@@ -45,11 +45,7 @@
           .replace(/&/g, '~and~') +
         (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash;
-      console.log(newQuery);
-
-      setTimeout(() => {
-        l.replace(newQuery);
-      }, 5000);
+      l.replace(newQuery);
     </script>
   </head>
   <body></body>
