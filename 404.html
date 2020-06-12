@@ -24,7 +24,7 @@
       // https://username.github.io/repo-name/?p=/one/two&q=a=b~and~c=d#qwe
       // Otherwise, leave segmentCount as 0.
 
-      var segmentCount = 0;
+      var segmentCount = 1;
 
       var l = window.location;
       var newQuery =
@@ -46,6 +46,7 @@
         (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash;
       console.log(newQuery);
+
       setTimeout(() => {
         l.replace(newQuery);
       }, 5000);
