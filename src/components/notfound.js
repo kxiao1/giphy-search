@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Notfound() {
+  const { pathname } = useLocation();
+  console.log(pathname);
   return (
-    <div className="header">
+    <div className="center">
       <h1>Not found</h1>
-      <div>
-        <Link to="/">Try logging in again. </Link>
-      </div>
+      <Link to="/">Try logging in again. </Link>
     </div>
   );
 }
