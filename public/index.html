@@ -4,6 +4,10 @@
     <title>giphy search</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       // https://github.com/rafrex/spa-github-pages
@@ -40,10 +44,9 @@
           if (q.p !== undefined) {
             window.history.replaceState(null, null, newEntry);
           }
+        } else {
+          console.log(l);
         }
-      else {
-        console.log(l);
-      }
       })(window.location);
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
@@ -53,4 +56,3 @@
     <script src="/build/bundle.js"></script>
   </body>
 </html>
-

@@ -6,13 +6,13 @@ import './style.css';
 
 function Auth() {
   const history = useHistory();
-  const [failed, setFailed] = useState('');
+  const [failed, setFailed] = useState('(*Demo only. No Google Data saved.)');
   const globalState = useContext(store);
   const { state, dispatch } = globalState;
   const { isSignedIn, clientId } = state;
   const getContent = () => {
     if (failed.length > 0) {
-      return <h4>Try again.</h4>;
+      return <h4>{failed}</h4>;
     }
     return null;
   };
@@ -36,7 +36,8 @@ function Auth() {
             history.push('./search');
           }}
           onFailure={err => {
-            setFailed(err.error);
+            console.log(err.error);
+            setFailed(`Try again.`);
           }}
           cookiePolicy="single_host_origin"
         />

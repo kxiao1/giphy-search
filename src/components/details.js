@@ -220,7 +220,8 @@ function Picture(props) {
       date = import_datetime.slice(0, dLast);
       const tLast = title.lastIndexOf('GIF');
       name = title.slice(0, tLast - 1);
-      userName = user ? user.display_name : '<Unknown User>';
+      userName =
+        user && user.display_name ? user.display_name : '<Unknown User>';
     }
     if (avatarUrl === '') {
       const { user } = picData;

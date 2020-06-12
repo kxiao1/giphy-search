@@ -1,6 +1,7 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* styling elements */
@@ -33,8 +34,10 @@ a:hover {
 }
 
 #title {
-  font-size: 5rem;
+  font-size: 4.2rem;
   color: silver;
+  /* max-height: 200px; */
+  max-width: 26.25rem;
 }
 .row-fluid {
   display: flex;
@@ -44,13 +47,13 @@ a:hover {
   min-width: 15rem;
 }
 .lift {
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.75rem;
 }
 .small {
   min-width: 2rem;
 }
 .fixed100 {
-  width: 120px;
+  min-width: 120px;
 }
 .desc {
   align-items: center;
@@ -129,7 +132,6 @@ a:hover {
   left:50%;
   transform: translate(-50%,-50%); 
   max-height: 300px;
-  margin-bottom: -40px;
   text-align: center;
 }
 .nice {
