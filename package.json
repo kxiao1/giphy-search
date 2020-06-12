@@ -38,8 +38,9 @@
     "stylelint-processor-styled-components": "^1.9.0"
   },
   "scripts": {
+    "404": "bash cp404.sh",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run 404",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:js": "eslint src/**"
