@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import { store } from './appContext';
 import './style.css';
@@ -11,14 +11,37 @@ function Auth() {
   );
   const globalState = useContext(store);
   const { state, dispatch } = globalState;
-  const { isSignedIn, clientId } = state;
+  const { clientId } = state;
   const getContent = () => {
     if (failed.length > 0) {
       return <h5>{failed}</h5>;
     }
     return null;
   };
-  const loading = <Redirect to="./search" />;
+  const storedProfile = sessionStorage.profile
+    ? JSON.parse(sessionStorage.profile)
+    : null;
+  useEffect(() => {
+    if (storedProfile) {
+      setTimeout(() => history.push('./search'), 3000);
+    }
+  }, [storedProfile, history]);
+  const loading = () => (
+    <div className="nice">
+      <header className="center">
+        <h4>Signing you in, </h4>
+        <h5>
+          <span className="bold">
+            {storedProfile.givenName.slice(
+              0,
+              storedProfile.givenName.indexOf(',')
+            )}{' '}
+            {storedProfile.familyName}
+          </span>
+        </h5>
+      </header>
+    </div>
+  );
   const body = (
     <div className="nice">
       <header className="center">
@@ -47,6 +70,9 @@ function Auth() {
       </header>
     </div>
   );
-  return isSignedIn ? loading : body;
+  if (storedProfile) {
+    return loading();
+  }
+  return body;
 }
 export default Auth;
